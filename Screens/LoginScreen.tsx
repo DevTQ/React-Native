@@ -1,89 +1,140 @@
-import { StatusBar } from 'expo-status-bar';
-import {ScrollView, StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Platform } from 'react-native';
-import Icon from "../types/icon.png";
+import React from 'react';
+import { 
+    SafeAreaView, 
+    StyleSheet, 
+    Text, 
+    View, 
+    Image, 
+    TextInput, 
+    TouchableOpacity, 
+    Platform, 
+    KeyboardAvoidingView 
+} from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Icon from "../types/icon.png";
 
 const LoginScreen = () => {
     return (
-        <KeyboardAwareScrollView
-            contentContainerStyle={{ flexGrow: 1 }}
-            keyboardShouldPersistTaps="handled">
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
-                <View style={styles.header}>
-                    <Image source={Icon} style={styles.image} />
-                    <Text style={{ color: '#6633FF', fontWeight: '500', fontSize: 25 }}>Welcome back.</Text>
-                </View>
-                <View style={styles.body}>
-                    <TextInput style={styles.input} placeholder="  Email" />
-                    <TextInput style={styles.input} placeholder="  Password" secureTextEntry />
-                    <TouchableOpacity>
-                        <Text style={styles.link}>Forgot your password?</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.bottom}>
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText}>LOGIN</Text>
-                    </TouchableOpacity>
-                    <Text style={{fontSize: 16}}>
-                        Don't have an account? <Text style={{ color: '#6633FF', fontWeight: '600'}}>Sign up</Text>
-                    </Text>
-                </View>
-            </ScrollView>
-        </KeyboardAwareScrollView>
+        <SafeAreaView style={{ flex: 1 }}>
+            <KeyboardAvoidingView 
+                style={{ flex: 1 }}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            >
+                <KeyboardAwareScrollView 
+                    contentContainerStyle={{ flexGrow: 1 }} 
+                    keyboardShouldPersistTaps="handled"
+                >
+                    {/* Header */}
+                    <View style={styles.header}>
+                        <Image source={Icon} style={styles.image} />
+                        <Text style={styles.headerText}>Welcome back.</Text>
+                    </View>
+
+                    {/* Body */}
+                    <View style={styles.body}>
+                        <TextInput 
+                            style={styles.input} 
+                            placeholder="Email" 
+                            placeholderTextColor="#999" 
+                        />
+                        <TextInput 
+                            style={styles.input} 
+                            placeholder="Password" 
+                            placeholderTextColor="#999" 
+                            secureTextEntry 
+                        />
+                        <TouchableOpacity>
+                            <Text style={styles.link}>Forgot your password?</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Bottom */}
+                    <View style={styles.bottom}>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.buttonText}>LOGIN</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.signUpText}>
+                            Don't have an account? 
+                            <TouchableOpacity>
+                                <Text style={styles.signUpLink}>Sign up</Text>
+                            </TouchableOpacity>
+                        </Text>
+                    </View>
+                </KeyboardAwareScrollView>
+            </KeyboardAvoidingView>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center'
-    },
+    // Header styles
     header: {
-        flex: 0.5,
-        marginTop: 140,
-        alignItems: 'center'
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: hp('5%'),
     },
     image: {
-        height: 130,
-        width: 130,
-        marginBottom: 20
+        height: hp('15%'),
+        width: hp('15%'),
+        marginBottom: hp('2%'),
     },
+    headerText: {
+        color: '#6633FF',
+        fontWeight: '500',
+        fontSize: wp('6%'),
+    },
+
+    // Body styles
     body: {
-        flex: 0.5,
-        paddingHorizontal: 20,
+        flex: 1,
+        paddingHorizontal: wp('5%'), 
+        marginTop: hp('2%'),
     },
     input: {
-        fontSize: 18,
-        height: 65,
+        fontSize: wp('4%'), 
+        height: hp('7%'),  
         borderWidth: 1,
         borderRadius: 5,
-        marginBottom: 20,
-        paddingHorizontal: 10,
+        marginBottom: hp('2%'),
+        paddingHorizontal: wp('3%'),
+        borderColor: '#ccc',
     },
     link: {
         alignSelf: 'flex-end',
-        fontSize: 15,
-        opacity: 0.6,
-
+        fontSize: wp('3.5%'),
+        color: '#6633FF',
+        opacity: 0.7,
+        marginBottom: hp('2%'),
     },
+
+    // Bottom styles
     bottom: {
-        flex: 2,
-        alignItems: 'center'
+        flex: 1,
+        alignItems: 'center',
+        marginTop: hp('2%'),
     },
     button: {
         backgroundColor: '#6633FF',
-        height: 60,
+        height: hp('7%'),     
         borderRadius: 5,
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: 10,
-        width: 350
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: wp('90%'),     
+        marginBottom: hp('2%'),
     },
     buttonText: {
-        color: "#ffffff",
-        fontWeight: "bold",
-        fontSize: 18,
+        color: '#ffffff',
+        fontWeight: 'bold',
+        fontSize: wp('4.5%'),
+    },
+    signUpText: {
+        fontSize: wp('4%'),  
+    },
+    signUpLink: {
+        color: '#6633FF',
+        fontWeight: '600',
     },
 });
 

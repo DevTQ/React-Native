@@ -1,14 +1,28 @@
-import {ScrollView, StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Platform, SafeAreaView } from 'react-native';
+import React from 'react';
+import { 
+    StyleSheet, 
+    Text, 
+    View, 
+    Image, 
+    TouchableOpacity, 
+    SafeAreaView 
+} from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from "../types/icon.png";
 
-const LoginTemplete = () => {
+const LoginTemplate = () => {
     return (
         <SafeAreaView style={styles.container}>
+            {/* Header */}
             <View style={styles.header}>
                 <Image source={Icon} style={styles.image} />
-                <Text style={{ color: '#6633FF', fontWeight: '500', fontSize: 25}}>Login Template</Text>
-                <Text style={{fontSize: 17, textAlign: 'center', marginTop: 12}}>The easiest way to start with your amazing application</Text>
+                <Text style={styles.title}>Login Template</Text>
+                <Text style={styles.subtitle}>
+                    The easiest way to start with your amazing application
+                </Text>
             </View>
+
+            {/* Bottom */}
             <View style={styles.bottom}>
                 <TouchableOpacity style={styles.loginBtn}>
                     <Text style={styles.buttonTextLogin}>LOGIN</Text>
@@ -23,54 +37,73 @@ const LoginTemplete = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 2,
+        flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     header: {
         flex: 1,
-        marginTop: 140,
-        alignItems: 'center'
+        marginTop: hp('5%'), 
+        alignItems: 'center',
     },
     image: {
-        height: 130,
-        width: 130,
-        marginBottom: 20
+        height: hp('15%'), 
+        width: hp('15%'),  
+        marginBottom: hp('2%'),
+    },
+    title: {
+        color: '#6633FF',
+        fontWeight: '500',
+        fontSize: wp('6%'), 
+    },
+    subtitle: {
+        fontSize: wp('4.5%'),
+        textAlign: 'center',
+        marginTop: hp('2%'),
+        color: '#555',
+        paddingHorizontal: wp('5%'), 
     },
     bottom: {
-        flex: 1.7,
-        alignItems: 'center'
+        flex: 1.5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: hp('2%'),
     },
     loginBtn: {
         backgroundColor: '#6633FF',
-        height: 60,
-        borderRadius: 5,
-        borderWidth: 0.3,
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: 10,
-        width: 350
+        height: hp('7%'),
+        borderRadius: wp('2%'),
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: hp('2%'),
+        width: wp('85%'), 
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 5,
     },
     signupBtn: {
         backgroundColor: 'white',
-        height: 60,
-        borderRadius: 5,
-        borderWidth: 0.3,
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: 10,
-        width: 350
+        height: hp('7%'),
+        borderRadius: wp('2%'),
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: hp('2%'),
+        width: wp('85%'),
+        borderWidth: 1,
+        borderColor: '#6633FF',
     },
     buttonTextLogin: {
-        color: "#ffffff",
-        fontWeight: "bold",
-        fontSize: 18,
+        color: '#ffffff',
+        fontWeight: 'bold',
+        fontSize: wp('4.5%'),
     },
     buttonTextSignup: {
-        fontWeight: "bold",
-        fontSize: 18,
-        color: '#6633FF'
+        fontWeight: 'bold',
+        fontSize: wp('4.5%'),
+        color: '#6633FF',
     },
 });
 
-export default LoginTemplete;
+export default LoginTemplate;
