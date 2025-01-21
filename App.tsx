@@ -8,8 +8,8 @@ import {NavigationContainer} from '@react-navigation/native';
 export default function App() {
   return (
     //<NavigationContainer>
-      //<LoginScreen/>
-    <RegisterScreen/>
+    <LoginScreen/>
+    //<RegisterScreen/>
     // <LoginTemplete/>
     // </NavigationContainer>
     // test change git commit

@@ -40,10 +40,12 @@ const RegisterScreen = () => {
                     <TouchableOpacity style={styles.button}>
                         <Text style={styles.buttonText}>SIGN UP</Text>
                     </TouchableOpacity>
-                    <Text style={styles.footerText}>
-                        Already have an account? 
-                        <TouchableOpacity><Text style={styles.footerLink}> Login</Text></TouchableOpacity>
-                    </Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={styles.footerText}>Already have an account?</Text>
+                        <TouchableOpacity>
+                            <Text style={styles.footerLink}> Login</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </SafeAreaView>
         </KeyboardAwareScrollView>

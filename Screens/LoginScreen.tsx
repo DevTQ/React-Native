@@ -54,12 +54,12 @@ const LoginScreen = () => {
                         <TouchableOpacity style={styles.button}>
                             <Text style={styles.buttonText}>LOGIN</Text>
                         </TouchableOpacity>
-                        <Text style={styles.signUpText}>
-                            Don't have an account? 
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <Text style={styles.signUpText}>Don't have an account?</Text>
                             <TouchableOpacity>
-                                <Text style={styles.signUpLink}>Sign up</Text>
+                                <Text style={styles.signUpLink}> Sign up</Text>
                             </TouchableOpacity>
-                        </Text>
+                        </View>
                     </View>
                 </KeyboardAwareScrollView>
             </KeyboardAvoidingView>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
 
     // Body styles
     body: {
-        flex: 1,
+        flex: 0.5,
         paddingHorizontal: wp('5%'), 
         marginTop: hp('2%'),
     },
@@ -104,14 +104,13 @@ const styles = StyleSheet.create({
     link: {
         alignSelf: 'flex-end',
         fontSize: wp('3.5%'),
-        color: '#6633FF',
         opacity: 0.7,
         marginBottom: hp('2%'),
     },
 
     // Bottom styles
     bottom: {
-        flex: 1,
+        flex: 1.5,
         alignItems: 'center',
         marginTop: hp('2%'),
     },
