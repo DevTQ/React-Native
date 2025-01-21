@@ -12,6 +12,7 @@ export default function App() {
     // <RegisterScreen/>
     // <LoginTemplete/>
     // </NavigationContainer>
+    // test change git commit
   );
 }
 
